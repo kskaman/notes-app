@@ -1,0 +1,37 @@
+// A Valid Request
+POST http://localhost:3001/api/notes 
+Content-Type: application/json
+
+{
+  "title": "New Note for PUT Request Test",
+  "tags": ["Testing", "PUT"],
+  "content": "This note is created to test the PUT request functionality. You can update this content to verify that your API correctly handles note updates.",
+  "lastEdited": "2025-02-19T15:30:00Z",
+  "isArchived": false
+}
+
+
+###
+// Missing required field content
+POST http://localhost:3001/api/notes
+Content-Type: application/json
+
+{
+  "title": "Missing Content Field Test",
+  "tags": ["Testing", "PUT"],
+  "lastEdited": "2025-02-19T15:30:00Z",
+  "isArchived": false
+}
+
+
+###
+// Missing required field title
+POST http://localhost:3001/api/notes
+Content-Type: application/json
+
+{
+  "tags": ["Testing", "PUT"],
+  "lastEdited": "2025-02-19T15:30:00Z",
+  "content": "Missing Title Field Test",
+  "isArchived": false
+}
