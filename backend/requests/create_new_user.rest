@@ -1,0 +1,18 @@
+### Signup new user
+POST http://localhost:3001/api/users/signup
+Content-Type: application/json
+
+{
+  "name": "Alice Lee",
+  "email": "alicelee@example.com",
+  "password": "Test@1234"
+}
+
+### Login with the newly created user
+POST http://localhost:3001/api/users/login
+Content-Type: application/json
+
+{
+  "email": "alicelee@example.com",
+  "password": "Test@1234"
+}

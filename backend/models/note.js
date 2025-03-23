@@ -6,6 +6,11 @@ const noteSchema = new mongoose.Schema({
   tags: { type: [String], default: [] },
   lastEdited: { type: Date, default: Date.now },
   isArchived: { type: Boolean, default: false },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
 });
 
 noteSchema.set("toJSON", {
