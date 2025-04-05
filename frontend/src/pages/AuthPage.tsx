@@ -1,7 +1,20 @@
-import { Stack } from "@mui/material";
+import Button from "../ui/Button";
 
 const AuthPage = () => {
-  return <Stack bgcolor="authPage.bg" width="100vw" height="100vh"></Stack>;
+  return (
+    <div
+      className="
+      flex justify-center items-center 
+      w-screen h-screen
+      bg-[var(--auth-page-bg)] 
+      gap-[20px]"
+    >
+      <Button>Submit</Button>
+      <Button variant="secondary">Submit</Button>
+      <Button variant="outlined">Submit</Button>
+      <Button variant="warning">Submit</Button>
+    </div>
+  );
 };
 
 export default AuthPage;
