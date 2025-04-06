@@ -4,15 +4,19 @@ const AuthPage = () => {
   return (
     <div
       className="
+      
       flex justify-center items-center 
       w-screen h-screen
       bg-[var(--auth-page-bg)] 
       gap-[20px]"
     >
-      <Button>Submit</Button>
-      <Button variant="secondary">Submit</Button>
-      <Button variant="outlined">Submit</Button>
-      <Button variant="warning">Submit</Button>
+      <Button>Primary</Button>
+      <Button variant="secondary">Secondary</Button>
+      <Button variant="outlined">Outlined</Button>
+      <Button variant="warning">Warning</Button>
+      <Button variant="warning" disabled={true}>
+        Warning
+      </Button>
     </div>
   );
 };

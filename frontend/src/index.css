@@ -20,9 +20,9 @@
   --btn-primary-text: #ffffff;
 
   /* Secondary Button */
-  --btn-secondary-bg: #f3f5f8;
-  --btn-secondary-hover-bg: #ffffff;
-  --btn-secondary-active-bg: #ffffff;
+  --btn-secondary-bg: #cacfd8;
+  --btn-secondary-hover-bg: #ebeef8;
+  --btn-secondary-active-bg: #cacfd8;
   --btn-secondary-text: #525866;
   --btn-secondary-hover-text: #0e121b;
   --btn-secondary-active-text: #0e121b;
@@ -31,7 +31,7 @@
   /* Outlined Button */
   --btn-outlined-bg: #ffffff;
   --btn-outlined-text: #0e121b;
-  --btn-outlined-hover-bg: #f3f5f8;
+  --btn-outlined-hover-bg: #f2f2f2;
   --btn-outlined-hover-text: #525866;
   --btn-outlined-active-bg: #ffffff;
   --btn-outlined-active-text: #0e121b;
@@ -39,12 +39,12 @@
 
   /* Warning Button */
   --btn-warning-bg: #fb3748;
-  --btn-warning-hover-bg: #ffd5d8;
+  --btn-warning-hover-bg: #e23240;
   --btn-warning-active-bg: #fb3748;
   --btn-warning-text: #ffffff;
 
-  /* Ring color for button when active */
-  --btn-active-ring: #0e121b;
+  /* border color for button when active */
+  --btn-active-border: #0e121b;
 
   /* Color for disabled buttons */
   --btn-disabled-bg: #f3f5f8;
@@ -69,105 +69,44 @@
   --body-text: #cccccc;
 
   /* Primary Button */
-  --btn-primary-bg: #375a7f;
-  --btn-primary-hover-bg: #2c4561;
-  --btn-primary-active-bg: #253b50;
+  --btn-primary-bg: #335cff;
+  --btn-primary-hover-bg: #2547d0;
+  --btn-primary-active-bg: #335cff;
   --btn-primary-text: #ffffff;
-  --btn-primary-hover-text: #ffffff;
-  --btn-primary-active-text: #ffffff;
-  --btn-primary-hover-border: #2c4561;
-  --btn-primary-active-border: #253b50;
 
   /* Secondary Button */
-  --btn-secondary-bg: #444444;
-  --btn-secondary-hover-bg: #3a3a3a;
-  --btn-secondary-active-bg: #323232;
+  --btn-secondary-bg: #2a2e36;
+  --btn-secondary-hover-bg: #232530;
+  --btn-secondary-active-bg: #2a2e36;
   --btn-secondary-text: #ffffff;
   --btn-secondary-hover-text: #ffffff;
   --btn-secondary-active-text: #ffffff;
-  --btn-secondary-hover-border: #cacfd8; /* adjust as needed for dark */
-  --btn-secondary-active-border: #0e121b;
+  --btn-secondary-border: #2a2e36;
 
   /* Outlined Button */
-  --btn-outlined-bg: transparent;
-  --btn-outlined-text: #444444;
-  --btn-outlined-border: #cacfd8;
-  --btn-outlined-hover-bg: #444444;
+  --btn-outlined-bg: #232530;
+  --btn-outlined-text: #ffffff;
+  --btn-outlined-hover-bg: #2a2e36;
   --btn-outlined-hover-text: #ffffff;
-  --btn-outlined-hover-border: transparent;
-  --btn-outlined-active-bg: #323232;
+  --btn-outlined-active-bg: #232530;
   --btn-outlined-active-text: #ffffff;
-  --btn-outlined-active-border: #0e121b;
+  --btn-outlined-border: #5c6576;
 
   /* Warning Button */
-  --btn-warning-bg: #e0a800;
-  --btn-warning-hover-bg: #d39e00;
-  --btn-warning-active-bg: #bf8f00;
-  --btn-warning-text: #212529;
-  --btn-warning-hover-text: #212529;
-  --btn-warning-active-text: #212529;
-  --btn-warning-hover-border: #b38600;
-  --btn-warning-active-border: #9f7500;
+  --btn-warning-bg: #fb3748;
+  --btn-warning-hover-bg: #e23240;
+  --btn-warning-active-bg: #fb3748;
+  --btn-warning-text: #ffffff;
+
+  /* border color for button when active */
+  --btn-secondary-active-border: #919191;
+  --btn-outlined-active-border: #ffffff;
 
   /* Color for disabled buttons */
-  --btn-disabled-bg: #f3f5f8;
-  --btn-disabled-text: #cacfd8;
+  --btn-disabled-bg: #2a2d38;
+  --btn-disabled-text: #99a0ae;
 
   /* color for button shadow when active */
-  --btn-inner-shadow-color: #ffffff;
-  --btn-outer-shadow-color: #99a0ae;
-}
-
-@theme inline {
-  /* Container Backgrounds */
-  --color-main-container: var(--main-container-bg);
-  --color-sub-container: var(--sub-container-bg);
-  --color-modal: var(--modal-bg);
-  --color-form: var(--form-bg);
-  --color-auth-page: var(--auth-page-bg);
-
-  /* Text Colors */
-  --color-heading: var(--heading-text);
-  --color-subheading: var(--subheading-text);
-  --color-body: var(--body-text);
-
-  /* Button Variants - Primary */
-  --color-btn-primary: var(--btn-primary-bg);
-  --color-btn-primary-hover: var(--btn-primary-hover-bg);
-  --color-btn-primary-active: var(--btn-primary-active-bg);
-  --color-btn-primary-text: var(--btn-primary-text);
-
-  /* Button Variants - Secondary */
-  --color-btn-secondary: var(--btn-secondary-bg);
-  --color-btn-secondary-hover: var(--btn-secondary-hover-bg);
-  --color-btn-secondary-active: var(--btn-secondary-active-bg);
-  --color-btn-secondary-text: var(--btn-secondary-text);
-  --color-btn-secondary-hover-text: var(--btn-secondary-hover-text);
-  --color-btn-secondary-active-text: var(--btn-secondary-active-text);
-  --color-btn-secondary-border: var(--btn-secondary-hover-border);
-
-  /* Button Variants - Outlined */
-  --color-btn-outlined: var(--btn-outlined-bg);
-  --color-btn-outlined-hover: var(--btn-outlined-hover-bg);
-  --color-btn-outlined-active: var(--btn-outlined-active-bg);
-  --color-btn-outlined-text: var(--btn-outlined-text);
-  --color-btn-outlined-hover-text: var(--btn-outlined-hover-text);
-  --color-btn-outlined-active-text: var(--btn-outlined-active-text);
-  --color-btn-outlined-border: var(--btn-outlined-border);
-
-  /* Button Variants - Warning */
-  --color-btn-warning: var(--btn-warning-bg);
-  --color-btn-warning-hover: var(--btn-warning-hover-bg);
-  --color-btn-warning-active: var(--btn-warning-active-bg);
-  --color-btn-warning-text: var(--btn-warning-text);
-
-  /* Ring color button is active */
-  --color-btn-active-ring: var(--btn-active-ring);
-  /* Color for disabled buttons */
-  --color-btn-disabled-bg: var(--btn-disabled-bg);
-  --color-btn-disabled-text: var(--btn-disabled-text);
-
-  /* color for button shadow when active */
-  --color-btn-inner-shadow-color: var(--btn-inner-shadow-color);
-  --color-btn-outer-shadow: var(--btn-outer-shadow-color);
+  --btn-inner-shadow-color: #232530;
+  --btn-outer-shadow-color: #4b5160;
 }
