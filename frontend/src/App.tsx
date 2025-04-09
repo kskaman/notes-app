@@ -1,5 +1,5 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router";
-import AuthPage from "./pages/AuthPage";
+import AuthPage from "./auth/AuthPage";
 
 const App = () => {
   return (

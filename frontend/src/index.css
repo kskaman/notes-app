@@ -3,10 +3,13 @@
 :root {
   /* Containers */
   --main-container-bg: #ffffff;
-  --sub-container-bg: #f4f4f4;
+  --sub-container-bg: #ffffff;
   --modal-bg: #ffffff;
   --form-bg: #f7f7f7;
   --auth-page-bg: #f3f5f8;
+
+  /* Container borders */
+  --sub-container-border: #e0e4ea;
 
   /* Text Colors */
   --heading-text: #111111;

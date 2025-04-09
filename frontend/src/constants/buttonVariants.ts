@@ -38,6 +38,14 @@ export const buttonVariants = {
       active:bg-[var(--btn-warning-active-bg)]
       border-none
     `,
+    text: `
+      bg-transparent
+      p-[4px]
+    `,
+    icon: `
+      bg-transparent
+      p-[4px]
+  `,
 } as const;
   
 
