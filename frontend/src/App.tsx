@@ -1,19 +1,18 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router";
-import AuthPage from "./auth/AuthPage";
+import { AuthRoutes } from "./auth/AuthRoutes";
 
 const App = () => {
   return (
     <BrowserRouter basename="/">
       <Routes>
-        {/* Redirect the root / to /auth/signin */}
+        {/* / → /auth/login */}
+        <Route path="/" element={<Navigate to="/auth/login" replace />} />
 
-        <Route path="/" element={<Navigate to="/auth/signin" replace />} />
+        {/* /auth/* → your auth routes */}
+        <Route path="auth/*" element={<AuthRoutes />} />
 
-        {/* All /auth/... routes go to AuthPage */}
-        <Route path="/auth/*" element={<AuthPage />} />
-
-        {/* Fallback if the user visits something else */}
-        <Route path="*" element={<Navigate to="/auth/signin" replace />} />
+        {/* anything else → /auth/login */}
+        <Route path="*" element={<Navigate to="/auth/login" replace />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,6 +1,5 @@
+import { Outlet } from "react-router";
 import logoSrc from "../assets/images/logo.svg";
-import Button from "../ui/Button";
-import { TextInput } from "../ui/TextInput";
 
 const AuthPage = () => {
   return (
@@ -24,10 +23,7 @@ const AuthPage = () => {
       >
         {/* logo on first line */}
         <img src={logoSrc} alt="Logo" className="w-32 md:w-40 h-auto" />
-        <TextInput onChange={() => {}} />
-        <TextInput onChange={() => {}} disabled={true} />
-        <TextInput onChange={() => {}} error={{ message: "this is error" }} />
-        <Button>Submit</Button>
+        <Outlet />
       </div>
     </div>
   );

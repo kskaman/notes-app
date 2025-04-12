@@ -4,12 +4,14 @@ import clsx from "clsx";
 export interface TextInputProps {
   /** onChange */
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  /** main label text (bold, 14px) */
+  /** main label text */
   label?: string;
-  /** sub-label text (normal, 14px) */
-  subLabel?: string;
+  /** sub-label text */
+  subLabel?: string | ReactNode;
   /** default value */
   name?: string;
+  /* value for controlled input */
+  value?: string;
   /** input placeholder */
   placeholder?: string;
   /** optional icon at start */
@@ -18,59 +20,80 @@ export interface TextInputProps {
   endIcon?: ReactNode;
   /** disable the input */
   disabled?: boolean;
-  /* Error object */
+  /** error object */
   error?: { message?: string };
+  /** informational text (shown when no error) */
+  infoText?: string;
 }
 
-export function TextInput({
+const TextInput = ({
   onChange,
   label,
   subLabel,
   name,
+  value,
   placeholder = "",
   startIcon,
   endIcon,
   error,
+  infoText,
   disabled = false,
-}: TextInputProps) {
-  return (
-    <div className="w-full flex flex-col">
-      <div className="flex flex-row justify-between items-center">
-        {label && <span className="text-[14px] text-bold">{label}</span>}
+}: TextInputProps) => {
+  const hasError = Boolean(error?.message);
+  const borderColorClass = hasError
+    ? "border border-[var(--warning-color)]"
+    : "border border-[var(--input-field-border)]";
 
-        {subLabel && <span className="text-[14px]">{subLabel}</span>}
+  // choose the message to show
+  const message = hasError ? error!.message : infoText ? infoText : "";
+
+  return (
+    <div className="w-full flex flex-col gap-[2px]">
+      <div className="mb-[2px] flex justify-between items-center">
+        {label && (
+          <span className="text-preset-4 text-[var(--input-field-label-color)]">
+            {label}
+          </span>
+        )}
+        {subLabel && (
+          <span className="text-preset-7 text-[var(--input-field-subLabel-color)]">
+            {subLabel}
+          </span>
+        )}
       </div>
 
       <div
         className={clsx(
-          "flex items-center border rounded-[12px]",
-          "h-[44px]",
+          "flex items-center rounded-[12px] h-[44px]",
           disabled
-            ? "bg-gray-100 border-gray-200 cursor-not-allowed"
-            : "bg-white border-gray-300 hover:bg-gray-50",
-          error && "border-red-500",
-          `active:ring-[2px]
-            active:ring-[var(--btn-outer-shadow-color)]
-            active:ring-offset-[2px]
-            active:ring-offset-[var(--btn-inner-shadow-color)]`
+            ? "bg-[var(--input-field-disabled-bg)]"
+            : "hover:bg-[var(--input-field-hover-bg)]",
+          borderColorClass,
+          "active:ring-[2px] active:ring-[var(--btn-outer-shadow-color)] active:ring-offset-[2px] active:ring-offset-[var(--btn-inner-shadow-color)]"
         )}
       >
         {startIcon && <span className="ml-3 mr-2">{startIcon}</span>}
 
         <input
+          name={name}
+          value={value}
           id={name}
           placeholder={placeholder}
           disabled={disabled}
           onChange={onChange}
-          className="flex-1 bg-transparent 
-          outline-none h-full 
-          text-[14px] px-[8px]"
+          className="
+            flex-1 
+            bg-transparent 
+            outline-none 
+            h-full 
+            px-[8px] 
+            text-preset-5"
         />
 
         {endIcon && (
           <button
             type="button"
-            className={clsx("p-3", disabled && "cursor-not-allowed")}
+            className={clsx("p-2", disabled && "cursor-not-allowed")}
             disabled={disabled}
           >
             {endIcon}
@@ -78,15 +101,19 @@ export function TextInput({
         )}
       </div>
 
-      {/* keep in DOM; hide when no error */}
       <p
         className={clsx(
-          "mt-1 text-[12px] min-h-[16px]",
-          error ? "text-red-500" : "text-transparent"
+          "mt-1 min-h-[16px]",
+          hasError
+            ? "text-[var(--warning-color)]"
+            : "text-[var(--input-field-info-text)]",
+          "text-preset-7"
         )}
       >
-        {error?.message || ""}
+        {message}
       </p>
     </div>
   );
-}
+};
+
+export default TextInput;

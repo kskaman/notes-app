@@ -12,9 +12,9 @@
   --sub-container-border: #e0e4ea;
 
   /* Text Colors */
-  --heading-text: #111111;
-  --subheading-text: #333333;
-  --body-text: #555555;
+  --heading-text: #0e121b;
+  --subheading-text-1: #525866;
+  --body-text-1: #555555;
 
   /* Primary Button */
   --btn-primary-bg: #335cff;
@@ -56,6 +56,20 @@
   /* color for button shadow when active */
   --btn-inner-shadow-color: #ffffff;
   --btn-outer-shadow-color: #99a0ae;
+
+  /* text input colors */
+  --input-field-border: #cacfd8;
+  --input-field-label-color: #0e121b;
+  --input-field-subLabel-color: #0e121b;
+  --input-field-info-text: #525866;
+  --input-field-disabled-bg: #f5f7fa;
+  --input-field-hover-bg: #f5f7fa;
+
+  /* warning text color */
+  --warning-color: #fb3748;
+
+  /* divider color */
+  --divider: #e0e4e4;
 }
 
 .dark {
@@ -112,4 +126,62 @@
   /* color for button shadow when active */
   --btn-inner-shadow-color: #232530;
   --btn-outer-shadow-color: #4b5160;
+}
+
+@layer components {
+  /* 24px / 120% / -0.5px / bold */
+  .text-preset-1 {
+    font-size: 24px;
+    line-height: 120%;
+    letter-spacing: -0.5px;
+    font-weight: 700; /* bold */
+  }
+
+  /* 20px / 120% / -0.5px / bold */
+  .text-preset-2 {
+    font-size: 20px;
+    line-height: 120%;
+    letter-spacing: -0.5px;
+    font-weight: 700; /* bold */
+  }
+
+  /* 16px / 120% / -0.3px / semibold */
+  .text-preset-3 {
+    font-size: 16px;
+    line-height: 120%;
+    letter-spacing: -0.3px;
+    font-weight: 600; /* semibold */
+  }
+
+  /* 14px / 120% / -0.2px / medium */
+  .text-preset-4 {
+    font-size: 14px;
+    line-height: 120%;
+    letter-spacing: -0.2px;
+    font-weight: 500; /* medium */
+  }
+
+  /* 14px / 120% / -0.2px / regular */
+  .text-preset-5 {
+    font-size: 14px;
+    line-height: 120%;
+    letter-spacing: -0.2px;
+    font-weight: 400; /* regular */
+  }
+
+  /* 12px / 120% / -0.2px / regular */
+  .text-preset-6 {
+    font-size: 12px;
+    line-height: 120%;
+    letter-spacing: -0.2px;
+    font-weight: 400; /* regular */
+  }
+
+  /* 12px / 140% / 0px / regular */
+  .text-preset-7 {
+    font-size: 12px;
+    line-height: 140%;
+    letter-spacing: 0px;
+    font-weight: 400; /* regular */
+  }
 }

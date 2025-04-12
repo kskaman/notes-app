@@ -98,7 +98,7 @@ const Button = ({
       {isRegular && (
         <>
           {icon && <span>{icon}</span>}
-          <span className="text-base text-nowrap">{children}</span>
+          <span className="text-preset-4 text-nowrap">{children}</span>
         </>
       )}
     </button>
