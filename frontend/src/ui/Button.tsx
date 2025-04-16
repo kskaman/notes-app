@@ -1,4 +1,3 @@
-// src/components/Button.tsx
 import { ReactNode, CSSProperties } from "react";
 import clsx from "clsx";
 import { ButtonVariant, buttonVariants } from "../constants/buttonVariants";
@@ -9,7 +8,7 @@ interface ButtonProps {
   icon?: ReactNode;
   /** only used for text‑only or icon‑only variants */
   color?: string;
-  /** only used for “regular” variants */
+  /** only used for "regular" variants */
   width?: string;
   height?: string;
   onClick?: () => void;
@@ -48,17 +47,17 @@ const Button = ({
     isRegular && !disabled
       ? `
       active:ring-[2px]
-      active:ring-[var(--btn-outer-shadow-color)]
+      active:ring-(--btn-outer-shadow-color)
       active:ring-offset-[2px]
-      active:ring-offset-[var(--btn-inner-shadow-color)]
+      active:ring-offset-(--btn-inner-shadow-color)
       focus-visible:outline-none
     `
       : "";
 
   const disabledClasses = disabled
     ? `
-      bg-[var(--btn-disabled-bg)]
-      text-[var(--btn-disabled-text)]
+      bg-(--btn-disabled-bg)
+      text-(--btn-disabled-text)
       border-none
       cursor-not-allowed
     `

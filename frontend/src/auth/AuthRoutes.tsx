@@ -1,9 +1,9 @@
 import { Routes, Route, Navigate } from "react-router";
 import AuthPage from "./AuthPage";
-import ResetPassword from "./components/ResetPassword";
 import VerifyEmail from "./components/VerifyEmail";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import ForgotPassword from "./components/ForgotPassword";
 
 export function AuthRoutes() {
   return (
@@ -23,7 +23,7 @@ export function AuthRoutes() {
         <Route path="signup" element={<Signup />} />
 
         {/* /auth/reset-password */}
-        <Route path="reset-password" element={<ResetPassword />} />
+        <Route path="forgot-password" element={<ForgotPassword />} />
 
         {/* /auth/verify-email */}
         <Route path="verify-email" element={<VerifyEmail />} />

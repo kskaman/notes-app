@@ -6,8 +6,13 @@ import * as yup from "yup";
 import TextInput from "../../ui/TextInput";
 import Button from "../../ui/Button";
 import Divider from "../../ui/Divider";
+import AuthFormWrapper from "./AuthFormWrapper";
+import PasswordTextInput from "../../ui/PasswordTextInput";
 
-interface LoginFormValues {
+import googleIcon from "../../assets/images/icon-google.svg";
+import { useState } from "react";
+
+interface FormValues {
   email: string;
   password: string;
 }
@@ -22,46 +27,62 @@ const schema = yup
   })
   .required();
 
-export default function Login() {
-  const { control, handleSubmit } = useForm<LoginFormValues>({
+const Login = () => {
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [showVerifyLink, setShowVerifyLink] = useState(false);
+
+  const {
+    control,
+    handleSubmit,
+    formState: { isSubmitting },
+  } = useForm<FormValues>({
     resolver: yupResolver(schema),
     defaultValues: { email: "", password: "" },
   });
 
-  const onSubmit = (data: LoginFormValues) => {
+  const onSubmit = (data: FormValues) => {
     console.log("Login", data);
   };
 
   return (
     <div className="w-full flex flex-col items-center gap-4">
-      {/* Heading */}
-      <h1 className="text-preset-1 text-[var(--heading-text)]">
-        Welcome to Note
-      </h1>
+      <div className="h-8">
+        {errorMessage && (
+          <p className="text-preset-5 text-(--warning-color) text-center">
+            {errorMessage}
+          </p>
+        )}
+        {showVerifyLink && (
+          <p className="text-preset-5 text-(--text-primary) text-center">
+            <Link
+              to="/auth/verify-email"
+              className="font-bold hover:underline text-(--text-secondary)"
+            >
+              Click here
+            </Link>
+            to resend verification
+          </p>
+        )}
+      </div>
 
-      {/* Subheading */}
-      <p className="text-preset-5 text-[var(--subheading-text-1)]">
-        Please log in to continue
-      </p>
-
-      {/* Form */}
-      <form className="w-full flex flex-col">
+      <AuthFormWrapper
+        heading="Welcome to Note"
+        subHeading="Please log in to continue"
+        buttonText={isSubmitting ? "Submitting..." : "Submit"}
+        onFormSubmit={handleSubmit(onSubmit)}
+      >
         {/* Email */}
         <Controller
           name="email"
           control={control}
-          render={({ field, fieldState }) => (
+          render={({ field, fieldState: { error } }) => (
             <TextInput
               name={field.name}
               value={field.value}
               onChange={field.onChange}
               label="Email Address"
               placeholder="Enter your email"
-              error={
-                fieldState.error
-                  ? { message: fieldState.error.message }
-                  : undefined
-              }
+              error={error}
             />
           )}
         />
@@ -70,47 +91,39 @@ export default function Login() {
         <Controller
           name="password"
           control={control}
-          render={({ field, fieldState }) => (
-            <TextInput
-              name={field.name}
+          render={({ field, fieldState: { error } }) => (
+            <PasswordTextInput
               value={field.value}
               onChange={field.onChange}
               label="Password"
-              placeholder="Enter your password"
-              error={
-                fieldState.error
-                  ? { message: fieldState.error.message }
-                  : undefined
-              }
               subLabel={
                 <Link
-                  to="/auth/reset-password"
-                  className="underline cursor-pointer text-preset-7 text-[var(--subheading-option-one-text)]"
+                  to="/auth/forgot-password"
+                  className="underline cursor-pointer 
+                  text-preset-7 text-(--subheading-text-1)
+                  hover:text-(--link-text-hover-color)"
                 >
                   Forgot
                 </Link>
               }
+              error={error}
             />
           )}
         />
-
-        {/* Login button */}
-        <Button variant="primary" width="100%" onClick={handleSubmit(onSubmit)}>
-          Login
-        </Button>
-      </form>
+      </AuthFormWrapper>
 
       {/* Divider */}
       <Divider />
 
       {/* Social login */}
-      <p className="text-preset-5 text-[var(--subheading-text-1)] text-center">
+      <p className="text-preset-5 text-(--subheading-text-1) text-center">
         Or log in with
       </p>
       <Button
         variant="outlined"
         width="100%"
         onClick={() => console.log("Google")}
+        icon={<img src={googleIcon} alt={"google icon"} width={"20px"} />}
       >
         Google
       </Button>
@@ -119,14 +132,16 @@ export default function Login() {
       <Divider />
 
       {/* Sign up link */}
-      <p className="text-preset-5 text-[var(--subheading-text-1)] text-center">
+      <p className="text-preset-5 text-(--subheading-text-1) text-center">
         No account yet?{" "}
         <Link
           to="/auth/signup"
           className="
               cursor-pointer 
               text-preset-5 
-              text-[var(--subheading-option-one-text)]
+              text-(--subheading-text-1)
+              hover:text-(--link-text-hover-color)
+              hover:font-medium
             "
         >
           Sign Up
@@ -134,4 +149,6 @@ export default function Login() {
       </p>
     </div>
   );
-}
+};
+
+export default Login;

@@ -1,7 +1,10 @@
 import { ReactNode } from "react";
 import clsx from "clsx";
 
+import InfoIcon from "../assets/Icons/InfoIcon";
+
 export interface TextInputProps {
+  type?: "text" | "password" | "email" | "number";
   /** onChange */
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   /** main label text */
@@ -27,6 +30,7 @@ export interface TextInputProps {
 }
 
 const TextInput = ({
+  type = "text",
   onChange,
   label,
   subLabel,
@@ -41,8 +45,8 @@ const TextInput = ({
 }: TextInputProps) => {
   const hasError = Boolean(error?.message);
   const borderColorClass = hasError
-    ? "border border-[var(--warning-color)]"
-    : "border border-[var(--input-field-border)]";
+    ? "border border-(--warning-color)"
+    : "border border-(--input-field-border)";
 
   // choose the message to show
   const message = hasError ? error!.message : infoText ? infoText : "";
@@ -51,12 +55,12 @@ const TextInput = ({
     <div className="w-full flex flex-col gap-[2px]">
       <div className="mb-[2px] flex justify-between items-center">
         {label && (
-          <span className="text-preset-4 text-[var(--input-field-label-color)]">
+          <span className="text-preset-4 text-(--input-field-label-color)">
             {label}
           </span>
         )}
         {subLabel && (
-          <span className="text-preset-7 text-[var(--input-field-subLabel-color)]">
+          <span className="text-preset-7 text-(--input-field-subLabel-color)">
             {subLabel}
           </span>
         )}
@@ -66,15 +70,16 @@ const TextInput = ({
         className={clsx(
           "flex items-center rounded-[12px] h-[44px]",
           disabled
-            ? "bg-[var(--input-field-disabled-bg)]"
-            : "hover:bg-[var(--input-field-hover-bg)]",
+            ? "bg-(--input-field-disabled-bg)"
+            : "hover:bg-(--input-field-hover-bg)",
           borderColorClass,
-          "active:ring-[2px] active:ring-[var(--btn-outer-shadow-color)] active:ring-offset-[2px] active:ring-offset-[var(--btn-inner-shadow-color)]"
+          "active:ring-[2px] active:ring-(--btn-outer-shadow-color) active:ring-offset-[2px] active:ring-offset-(--btn-inner-shadow-color)"
         )}
       >
         {startIcon && <span className="ml-3 mr-2">{startIcon}</span>}
 
         <input
+          type={type}
           name={name}
           value={value}
           id={name}
@@ -91,27 +96,45 @@ const TextInput = ({
         />
 
         {endIcon && (
-          <button
-            type="button"
-            className={clsx("p-2", disabled && "cursor-not-allowed")}
-            disabled={disabled}
+          <span
+            className={clsx(
+              "mr-4 ml-2 flex align-center",
+              disabled && "cursor-not-allowed"
+            )}
           >
-            {endIcon}
-          </button>
+            <button type="button" disabled={disabled}>
+              {endIcon}
+            </button>
+          </span>
         )}
       </div>
 
-      <p
-        className={clsx(
-          "mt-1 min-h-[16px]",
-          hasError
-            ? "text-[var(--warning-color)]"
-            : "text-[var(--input-field-info-text)]",
-          "text-preset-7"
-        )}
+      <span
+        className="flex gap-1 items-start
+       min-h-5 mb-1"
       >
-        {message}
-      </p>
+        {message && (
+          <>
+            <InfoIcon
+              color={
+                hasError
+                  ? "var(--warning-color)"
+                  : "var(--input-field-info-text)"
+              }
+            />
+            <p
+              className={clsx(
+                hasError
+                  ? "text-(--warning-color)"
+                  : "text-(--input-field-info-text)",
+                "text-preset-7"
+              )}
+            >
+              {message}
+            </p>
+          </>
+        )}
+      </span>
     </div>
   );
 };

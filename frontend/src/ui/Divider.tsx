@@ -9,7 +9,7 @@ const Divider = () => (
       w-full 
       h-[1px] 
       border-none 
-      bg-[var(--divider)]
+      bg-(--divider)
     "
   />
 );
